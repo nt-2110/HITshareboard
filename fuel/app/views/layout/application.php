@@ -7,7 +7,7 @@
 		<title>HIT Shareboard</title>
 
 		<!-- Bootstrap -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<?php echo Asset::css('bootstrap.min.css'); ?>
 
 	</head>
 	<body>
@@ -110,7 +110,7 @@
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../js/bootstrap.min.js"></script>
-		<script src="../js/holder.js"></script>
+		<?php echo Asset::js('bootstrap.min.js'); ?>
+		<?php echo Asset::js('holder.js'); ?>
 	</body>
 </html>
