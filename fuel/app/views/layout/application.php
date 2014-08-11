@@ -88,7 +88,7 @@
 				</div>
 
 				<!-- コンテンツ部 -->
-				<?php echo $contents; ?>
+<?php echo $contents; ?>
 
 			</div>
 		</div>
@@ -98,7 +98,9 @@
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-9">
-							<a href="https://sites.google.com/site/hitsolu/"><img src="../img/hitsol_logo.png"></a>
+							<a href="https://sites.google.com/site/hitsolu/">
+								<?php echo Asset::img('hitsol_logo.png'); ?>
+							</a>
 						</div>
 						<div class="col-md-3 text-right">
 							Copyright (C) 2014 HIT Solution

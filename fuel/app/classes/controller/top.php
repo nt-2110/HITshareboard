@@ -19,9 +19,9 @@ class Controller_Top extends Controller_Template
 
 	public function action_upload()
 	{
-		$data["subnav"] = array('upload'=> 'active' );
-		$this->template->title = 'Top &raquo; Upload';
-		$this->template->content = View::forge('top/upload', $data);
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('top/upload');
+		return $view;
 	}
 
 }
