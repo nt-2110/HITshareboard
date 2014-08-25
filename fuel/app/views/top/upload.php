@@ -56,11 +56,11 @@
 
 					<span class="glyphicon glyphicon-folder-open"></span> 掲示板画像を選択してください。
 					<input id="input-1" name="file" type="file" class="file">
-<?php /*					<input id="input-2" type="file" class="file">
+					<input id="input-2" type="file" class="file">
 					<input id="input-3" type="file" class="file">
 					<input id="input-4" type="file" class="file">
 					<input id="input-5" type="file" class="file">
-*/?>					<br>
+					<br>
 					<br>
 					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span> 画像を投稿する</button>
 				</form>
