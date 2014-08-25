@@ -6,6 +6,7 @@ class Model_Bulletin extends \Orm\Model
 		'id',
 		'data',
 		'date',
+		'ext',
 		'user_id',
 		'board_id',
 		'state',
@@ -26,4 +27,17 @@ class Model_Bulletin extends \Orm\Model
 
 	protected static $_table_name = 'bulletins';
 
+	public static function add($file = array())
+	{
+		$exif = exif_read_data($file['file'],'FILE');
+		$data = array(
+			'data' => file_get_contents($file['file']),
+			'date' => $exif['FileDateTime'],
+			'ext' => $file['extension'],
+			'user_id' => 1,
+			'board_id' => 1,
+			'state' => 4,
+		);
+		return static::forge($data)->save();
+	}
 }

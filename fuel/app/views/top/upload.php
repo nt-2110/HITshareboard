@@ -10,7 +10,7 @@
 				掲示板画像を投稿する際は、必ず<a href="terms.html">利用規約</a>を読んで、投稿してください。また、投稿の際に利用規約に同意したものとします。
 				<br>
 				<br>
-				<form method="post" action="example.cgi" enctype="multipart/form-data">
+<?php echo Form::open(array('action' => 'image/upload', 'enctype' => 'multipart/form-data')) ?>
 					<li class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
 							掲示画像の学部を選択…
@@ -55,14 +55,14 @@
 					<br>
 
 					<span class="glyphicon glyphicon-folder-open"></span> 掲示板画像を選択してください。
-					<input id="input-1" type="file" class="file">
+					<input id="input-1" name="file" type="file" class="file">
 					<input id="input-2" type="file" class="file">
 					<input id="input-3" type="file" class="file">
 					<input id="input-4" type="file" class="file">
 					<input id="input-5" type="file" class="file">
 					<br>
 					<br>
-					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span> 画像を投稿する</button>
+					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span> 画像を投稿する</button>
 				</form>
 			</div>
 		</ol>
