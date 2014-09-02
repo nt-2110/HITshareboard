@@ -1,12 +1,16 @@
 <div class="col-md-10">
 	<div class="well well-sm">
 		<ol class="breadcrumb">
-			<li><a href="#">トップ</a></li>
+			<li><?php echo Html::anchor('top/latest', 'トップ'); ?></li>
 			<li>画像の投稿</li>
 			<div>
 				<br>
+<?php if(Session::get_flash('error')): ?>
 				<div class="alert alert-danger" role="alert">画像を投稿する事が出来ませんでした。内容を確認の上、もう一度試してみてください。</div>
+<?php endif; ?>
+<?php if(Session::get_flash('success')): ?>
 				<div class="alert alert-info" role="alert">画像を投稿しました。また審査に最大3日かかりますので、掲載までしばらくお待ちください。</div>
+<?php endif; ?>
 				掲示板画像を投稿する際は、必ず<a href="terms.html">利用規約</a>を読んで、投稿してください。また、投稿の際に利用規約に同意したものとします。
 				<br>
 				<br>
@@ -55,15 +59,15 @@
 					<br>
 
 					<span class="glyphicon glyphicon-folder-open"></span> 掲示板画像を選択してください。
-					<input id="input-1" name="file" type="file" class="file">
-					<input id="input-2" type="file" class="file">
-					<input id="input-3" type="file" class="file">
-					<input id="input-4" type="file" class="file">
-					<input id="input-5" type="file" class="file">
+					<?php echo Form::file('input-1', array('name' => 'file', 'class' => 'file')); ?>
+					<?php echo Form::file('input-2', array('name' => 'file', 'class' => 'file')); ?>
+					<?php echo Form::file('input-3', array('name' => 'file', 'class' => 'file')); ?>
+					<?php echo Form::file('input-4', array('name' => 'file', 'class' => 'file')); ?>
+					<?php echo Form::file('input-5', array('name' => 'file', 'class' => 'file')); ?>
 					<br>
 					<br>
 					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span> 画像を投稿する</button>
-				</form>
+				<?php echo Form::close(); ?>
 			</div>
 		</ol>
 	</div>
