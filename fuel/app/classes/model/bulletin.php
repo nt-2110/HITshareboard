@@ -28,8 +28,9 @@ class Model_Bulletin extends \Orm\Model
 
 	public static function add($file = array())
 	{
+//		$exif = exif_read_data($file['file'],'FILE');
 		$imagick = new \Imagick();
-		$imagick->readImage($file['file']);
+		$imagick->readImageBlob(file_get_contents($file['file']));
 		$orientation = $imagick->getImageOrientation();
 		$isRotated = false;
 		if($orientation === \Imagick::ORIENTATION_RIGHTTOP){
@@ -46,7 +47,8 @@ class Model_Bulletin extends \Orm\Model
 			$imagick->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
 		}
 		$data = array(
-			'data' => file_get_contents($file['file']),
+//			'data' => file_get_contents($file['file']),
+			'data' => $imagick->getImageBlob(),
 			'ext' => $file['extension'],
 			'user_id' => 1,
 			'board_id' => 1,
