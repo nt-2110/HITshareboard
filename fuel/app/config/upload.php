@@ -20,7 +20,6 @@
  */
 
 return array(
-	'ext_whitelist'	 => array('png', 'jpg', 'gif',),
 	/**
 	 * global configuration
 	*/
@@ -36,7 +35,8 @@ return array(
 	'max_size'			=> 0,
 
 	// list of file extensions that a user is allowed to upload
-	'ext_whitelist'		=> array(),
+	//'ext_whitelist'		=> array(),
+	'ext_whitelist'	 => array('png', 'jpg', 'jpeg', 'gif',),
 
 	// list of file extensions that a user is NOT allowed to upload
 	'ext_blacklist'		=> array(),

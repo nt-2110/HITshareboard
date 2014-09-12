@@ -9,7 +9,6 @@ class Create_bulletins
 		\DBUtil::create_table('bulletins', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'data' => array('type' => 'longblob'),
-			'date' => array('type' => 'timestamp'),
 			'ext' => array('constraint' => 4, 'type' => 'varchar'),
 			'user_id' => array('constraint' => 11, 'type' => 'int'),
 			'board_id' => array('constraint' => 11, 'type' => 'int'),
