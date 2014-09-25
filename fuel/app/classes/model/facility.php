@@ -1,11 +1,10 @@
 <?php
 
-class Model_Like extends \Orm\Model
+class Model_Facility extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'bulletin_id',
-		'user_id',
+		'facility_name',
 		'created_at',
 		'updated_at',
 	);
@@ -21,6 +20,6 @@ class Model_Like extends \Orm\Model
 		),
 	);
 
-	protected static $_table_name = 'likes';
+	protected static $_table_name = 'facilities';
 
 }

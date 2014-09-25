@@ -37,6 +37,21 @@ class Controller_Image extends Controller_Template
 		return Response::forge($pic->data, 200, $headers);
 	}
 
+	public function action_thumbnail($id = null)
+	{
+		$pic = Model_Bulletin::find($id);
+		$images = array(
+			'png' => 'image/png',
+			'jpg' => 'image/jpeg',
+			'jpeg' => 'image/jpeg',
+			'gif' => 'image/gif',
+		);
+		$headers = array(
+			'Content-type' => $images[$pic->ext],
+		);
+		return Response::forge($pic->thumbnail, 200, $headers);
+	}
+
 	public function action_check()
 	{
 		// 写真のExifからデータを取得(規定名として、download.jpegにしている)

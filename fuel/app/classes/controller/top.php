@@ -19,8 +19,10 @@ class Controller_Top extends Controller_Template
 
 	public function action_upload()
 	{
+		$data['faculties'] = Model_Faculty::find('all');
+		$data['departs'] = Model_Depart::find('all');
 		$view = View::forge('layout/application');
-		$view->contents = View::forge('top/upload');
+		$view->contents = View::forge('top/upload',$data);
 		return $view;
 	}
 
