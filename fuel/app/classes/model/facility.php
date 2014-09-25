@@ -1,10 +1,10 @@
 <?php
 
-class Model_Board extends \Orm\Model
+class Model_Facility extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'boardname',
+		'facility_name',
 		'created_at',
 		'updated_at',
 	);
@@ -20,6 +20,6 @@ class Model_Board extends \Orm\Model
 		),
 	);
 
-	protected static $_table_name = 'boards';
+	protected static $_table_name = 'facilities';
 
 }

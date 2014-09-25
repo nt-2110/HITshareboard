@@ -5,9 +5,11 @@ class Model_Bulletin extends \Orm\Model
 	protected static $_properties = array(
 		'id',
 		'data',
+		'thumbnail',
 		'ext',
 		'user_id',
-		'board_id',
+		'facility_id',
+		'depart_id',
 		'state',
 		'created_at',
 		'updated_at',
@@ -46,12 +48,21 @@ class Model_Bulletin extends \Orm\Model
 		if($isRotated){
 			$imagick->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
 		}
+		$thumbnail = new \Imagick();
+		$thumbnail->readImageBlob($imagick->getImageBlob());
+//		$thumbnail->cropThumbnailImage(200,160);
+		$x = ( $thumbnail->getImageWidth() / 2 ) - 400;
+		$thumbnail->cropImage(800,640,$x,0);
+		$thumbnail->scaleImage(200,160,true);
+//		$thumbnail->cropImage(200,160,0,0);
 		$data = array(
 //			'data' => file_get_contents($file['file']),
 			'data' => $imagick->getImageBlob(),
+			'thumbnail' => $thumbnail->getImageBlob(),
 			'ext' => $file['extension'],
 			'user_id' => 1,
-			'board_id' => 1,
+			'facility_id' => 1,
+			'depart_id' => 1,
 			'state' => 4,
 		);
 		return static::forge($data)->save();

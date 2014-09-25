@@ -20,6 +20,17 @@
 							掲示画像の学部を選択…
 							<span class="caret"></span>
 						</button>
+						<select name="depart">
+<?php foreach($faculties as $faculty): ?>
+							<option disabled>---<?php echo $faculty->faculty_name; ?>---</option>
+	<?php foreach($departs as $depart): ?>
+		<?php if($faculty->id == $depart->faculty_id): ?>
+							<option value="<?php echo $depart->id; ?>"><?php echo $depart->depart_name; ?></option>
+		<?php endif; ?>
+	<?php endforeach; ?>
+<?php endforeach; ?>
+						</select>
+<?php /*
 						<ul class="dropdown-menu" role="menu">
 							<li role="presentation" class="dropdown-header">工学部</li>
 							<li><a href="#">電子情報工学科</a></li>
@@ -42,6 +53,7 @@
 							<li><a href="#">生体医工学科</a></li>
 							<li><a href="#">食品生命科学科</a></li>
 						</ul>
+*/ ?>
 					</li>
 					<br>
 					<li class="dropdown">

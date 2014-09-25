@@ -2,13 +2,13 @@
 
 namespace Fuel\Migrations;
 
-class Create_boards
+class Create_facilities
 {
 	public function up()
 	{
-		\DBUtil::create_table('boards', array(
+		\DBUtil::create_table('facilities', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'boardname' => array('constraint' => 255, 'type' => 'varchar'),
+			'facility_name' => array('constraint' => 255, 'type' => 'varchar'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
@@ -17,6 +17,6 @@ class Create_boards
 
 	public function down()
 	{
-		\DBUtil::drop_table('boards');
+		\DBUtil::drop_table('facilities');
 	}
 }
