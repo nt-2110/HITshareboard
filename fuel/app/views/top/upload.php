@@ -15,22 +15,24 @@
 				<br>
 				<br>
 <?php echo Form::open(array('action' => 'image/upload', 'enctype' => 'multipart/form-data')) ?>
+					掲示画像の学部を選択…
+					<br>
+					<select name="id">
+<?php foreach($faculties as $faculty): ?>
+						<option value="<?php echo $faculty->id; ?>00">---<?php echo $faculty->faculty_name; ?>---</option>
+<?php 	foreach($departs as $depart): ?>
+<?php 		if($faculty->id == $depart->faculty_id): ?>
+						<option value="<?php echo $depart->id; ?>"><?php echo $depart->depart_name; ?></option>
+<?php 		endif; ?>
+<?php 	endforeach; ?>
+<?php endforeach; ?>
+					</select>
+<?php /*
 					<li class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
 							掲示画像の学部を選択…
 							<span class="caret"></span>
 						</button>
-						<select name="depart">
-<?php foreach($faculties as $faculty): ?>
-							<option disabled>---<?php echo $faculty->faculty_name; ?>---</option>
-	<?php foreach($departs as $depart): ?>
-		<?php if($faculty->id == $depart->faculty_id): ?>
-							<option value="<?php echo $depart->id; ?>"><?php echo $depart->depart_name; ?></option>
-		<?php endif; ?>
-	<?php endforeach; ?>
-<?php endforeach; ?>
-						</select>
-<?php /*
 						<ul class="dropdown-menu" role="menu">
 							<li role="presentation" class="dropdown-header">工学部</li>
 							<li><a href="#">電子情報工学科</a></li>
@@ -53,9 +55,10 @@
 							<li><a href="#">生体医工学科</a></li>
 							<li><a href="#">食品生命科学科</a></li>
 						</ul>
-*/ ?>
 					</li>
+*/ ?>
 					<br>
+<?php /*
 					<li class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
 							建物を指定…
@@ -68,6 +71,7 @@
 							<li><a href="#">Nexus 就職部前</a></li>
 						</ul>
 					</li>
+*/ ?>
 					<br>
 
 					<span class="glyphicon glyphicon-folder-open"></span> 掲示板画像を選択してください。

@@ -28,7 +28,7 @@ class Model_Bulletin extends \Orm\Model
 
 	protected static $_table_name = 'bulletins';
 
-	public static function add($file = array())
+	public static function add($file = array(), $depart_id = null)
 	{
 //		$exif = exif_read_data($file['file'],'FILE');
 		$imagick = new \Imagick();
@@ -62,7 +62,7 @@ class Model_Bulletin extends \Orm\Model
 			'ext' => $file['extension'],
 			'user_id' => 1,
 			'facility_id' => 1,
-			'depart_id' => 1,
+			'depart_id' => $depart_id,
 			'state' => 4,
 		);
 		return static::forge($data)->save();
