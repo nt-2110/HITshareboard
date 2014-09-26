@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"><span class="glyphicon glyphicon-list-alt"></span> HIT ShareBoard</a>
+					<?php echo Html::anchor('top/latest','<span class="glyphicon glyphicon-list-alt"></span> HIT ShareBoard',array('class'=>'navbar-brand')); ?>
 				</div>
 			</div>
 		</nav>
@@ -63,7 +63,7 @@
 						</li>
 						<li>
 							<div class="btn-group btn-group-justified">
-								<button type="button" class="btn"><span class="glyphicon glyphicon-question-sign"></span> 使い方</button>
+								<?php echo Html::anchor('top/info','<button type="button" class="btn"><span class="glyphicon glyphicon-question-sign"></span> 使い方</button>')."\n"; ?>
 							</div>
 						</li>
 					</ul>
