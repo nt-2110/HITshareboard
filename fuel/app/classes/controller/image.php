@@ -6,6 +6,7 @@ class Controller_Image extends Controller_Template
 	public function action_upload()
 	{
 		if(Input::method('POST')){
+			$id = Input::post('id');
 			$config = array(
 				'path' => DOCROOT.DS.'files',
 				'randomize' => true,
@@ -14,7 +15,7 @@ class Controller_Image extends Controller_Template
 			if(Upload::is_valid()){
 				$files = Upload::get_files();
 				foreach($files as $file){
-					Model_Bulletin::add($file);
+					Model_Bulletin::add($file,$id);
 				}
 			}
 		}

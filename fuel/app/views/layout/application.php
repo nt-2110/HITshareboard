@@ -36,32 +36,29 @@
 				<div class="col-md-2">
 					<ul class="nav nav-pills nav-stacked">
 						<li class="active">
-							<a href="#">
-								<span class="badge pull-right">42</span>
-								24時間内の新着
-							</a>
+							<?php echo Html::anchor('top/latest','<span class="badge pull-right">42</span>24時間内の新着'); ?>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 								学科で絞り込み… <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">電子情報工学科</a></li>
-								<li><a href="#">電気システム工学科</a></li>
-								<li><a href="#">機械システム工学科</a></li>
-								<li><a href="#">知能機械工学科</a></li>
-								<li><a href="#">都市デザイン工学科</a></li>
-								<li><a href="#">建築工学科</a></li>
+								<li><?php echo Html::anchor('board/depart/1','電子情報工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/2','電気システム工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/3','機械システム工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/4','知能機械工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/5','都市デザイン工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/6','建築工学科'); ?></li>
 								<li class="divider"></li>
-								<li><a href="#">情報工学科</a></li>
-								<li><a href="#">知的情報システム学科</a></li>
-								<li><a href="#">健康情報学科</a></li>
+								<li><?php echo Html::anchor('board/depart/7','情報工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/8','知的情報システム学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/9','健康情報学科'); ?></li>
 								<li class="divider"></li>
-								<li><a href="#">環境デザイン学科</a></li>
-								<li><a href="#">地球環境学科</a></li>
+								<li><?php echo Html::anchor('board/depart/10','環境デザイン学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/11','地球環境学科'); ?></li>
 								<li class="divider"></li>
-								<li><a href="#">生体医工学科</a></li>
-								<li><a href="#">食品生命科学科</a></li>
+								<li><?php echo Html::anchor('board/depart/12','生体医工学科'); ?></li>
+								<li><?php echo Html::anchor('board/depart/13','食品生命科学科'); ?></li>
 							</ul>
 						</li>
 						<li>
@@ -78,7 +75,7 @@
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">
-						<button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-upload"></span> 画像を投稿</button> 
+						<?php echo Html::anchor('top/upload','<button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-upload"></span> 画像を投稿</button>')."\n"; ?>
 					</div>
 					<hr>
 					<div class="text-danger" style="font-family: cursive;">

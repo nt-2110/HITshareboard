@@ -13,6 +13,14 @@ class Create_faculties
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
 		), array('id'));
+	
+		$table = 'faculties';
+\DB::insert($table)->set(array('faculty_name' => '全学部'))->execute();
+\DB::insert($table)->set(array('faculty_name' => '工学部'))->execute();
+\DB::insert($table)->set(array('faculty_name' => '情報学部'))->execute();
+\DB::insert($table)->set(array('faculty_name' => '環境学部'))->execute();
+\DB::insert($table)->set(array('faculty_name' => '生命学部'))->execute();
+
 	}
 
 	public function down()
