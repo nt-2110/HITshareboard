@@ -1,16 +1,16 @@
 <div class="col-md-10">
 	<div class="well well-sm">
 		<ol class="breadcrumb">
-			<li><a href="#">トップ</a></li>
+			<li><?php echo Html::anchor('top/latest','トップ'); ?></li>
 <?php if(!empty($boardname)): ?>
-			<li><a href="#"><?php echo $boardname; ?></a></li>
+			<li><?php echo Html::anchor($url,$boardname); ?></li>
 <?php endif; ?>
 		</ol>
 		<div class="row">
 <?php foreach($bulletins as $bulletin): ?>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<?php echo Html::anchor('image/'.$bulletin->id.'/image', '<img src="http://localhost/HITshareboard/image/thumbnail/'.$bulletin->id.'" alt="...">','')."\n"; ?>
+					<?php echo Html::anchor('image/'.$bulletin->id.'/image', '<img src="http://'.$_SERVER['SERVER_NAME'].'/HITshareboard/image/'.$bulletin->id.'/thumbnail" alt="...">','')."\n"; ?>
 					<div class="caption">
 						<span class="glyphicon glyphicon-time"></span> : <?php echo date('Y年n月j日',$bulletin->created_at); ?>
 						<br>
