@@ -9,7 +9,9 @@ class Create_users
 		\DBUtil::create_table('users', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'authority_id' => array('constraint' => 11, 'type' => 'int'),
-			'username' => array('constraint' => 255, 'type' => 'varchar'),
+			'username' => array('constraint' => 255, 'type' => 'varchar', 'null' => true),
+			'password' => array('constraint' => 255, 'type' => 'varchar', 'null' => true),
+			'cookie' => array('constraint' => 255, 'type' => 'varchar', 'null' => true),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 

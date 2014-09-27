@@ -15,11 +15,11 @@ class Controller_Image extends Controller_Template
 			if(Upload::is_valid()){
 				$files = Upload::get_files();
 				foreach($files as $file){
-					Model_Bulletin::add($file,$id);
+					Model_Bulletin::add($file,$id,'2');
 				}
 			}
+			Session::set_flash('success', 1);
 		}
-		Session::set_flash('success', 1);
 		Response::redirect('/top/upload');
 	}
 
@@ -51,6 +51,27 @@ class Controller_Image extends Controller_Template
 			'Content-type' => $images[$pic->ext],
 		);
 		return Response::forge($pic->thumbnail, 200, $headers);
+	}
+
+	public function action_countup($id = null)
+	{
+		$cookie = Cookie::get('user_cookie_id','null');
+		if(empty($cookie)){
+			$new_user = Model_User::forge(array('authority_id' => 1));
+			$new_user->save();
+			Cookie::set('user_cookie_id',md5($new_user->id));
+			$new_user->cookie = md5($new_user->id);
+			$new_user->save();
+		}
+		$user = Model_User::find('first',array('where' => array('cookie' => $cookie)));
+		$like = Model_Like::find('first',array('where' => array('bulletin_id' => $id ,'user_id' => $user->id)));
+		if(empty($like)){
+			$new_like = Model_Like::forge();
+			$new_like->bulletin_id = $id;
+			$new_like->user_id = $user->id;
+			$new_like->save();
+		}
+		Response::redirect_back('top/latest');
 	}
 
 	public function action_check()

@@ -36,7 +36,7 @@
 				<div class="col-md-2">
 					<ul class="nav nav-pills nav-stacked">
 						<li class="active">
-							<?php echo Html::anchor('top/latest','<span class="badge pull-right">'.$latest_number.'</span>24時間内の新着'); ?>
+							<?php echo Html::anchor('systemsprivate/list','<span class="badge pull-right">'.$latest_number.'</span>24時間内の<br>認可待ち画像'); ?>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -75,7 +75,7 @@
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">
-						<?php echo Html::anchor('top/upload','<button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-upload"></span> 画像を投稿</button>')."\n"; ?>
+						<?php echo Html::anchor('systemsprivate/upload','<button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-upload"></span> 画像を投稿</button>')."\n"; ?>
 					</div>
 					<hr>
 					<div class="text-danger" style="font-family: cursive;">

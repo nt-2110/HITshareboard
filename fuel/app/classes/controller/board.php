@@ -5,21 +5,45 @@ class Controller_Board extends Controller_Template
 
 	public function action_latest()
 	{
+		$cookie = Cookie::get('user_cookie_id','null');
+		if(empty($cookie)){
+			$new_user = Model_User::forge(array('authority_id' => 1));
+			$new_user->save();
+			Cookie::set('user_cookie_id',md5($new_user->id));
+			$new_user->cookie = md5($new_user->id);
+			$new_user->save();
+		}
 		$data['url'] = '/top/latest';
 		$data['part'] = Input::get('part');
 		if(empty($data['part']))
 		{
 			$data['part'] = 1;
 		}
-		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('state' => '4'),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9' ));
-		$data['max_part'] = (int)(Model_Bulletin::query()->where('state','4')->count() / 9);
-		$view = View::forge('layout/application');
+		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('state' => '3'),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9' ));
+		$departs = Model_depart::find('all');
+		foreach($departs as $depart){
+			$data['labels'][$depart->id] = $depart->faculty_id.'00';
+		}
+		$faculties = Model_Faculty::find('all');
+		foreach($faculties as $faculty){
+			$data['labels'][$faculty->id.'00'] = $faculty->id.'00';
+		}
+		$data['max_part'] = (int)(Model_Bulletin::query()->where('state','3')->count() / 9);
+		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('board/list', $data);
 		return $view;
 	}
 
 	public function action_depart($id = null)
 	{
+		$cookie = Cookie::get('user_cookie_id','null');
+		if(empty($cookie)){
+			$new_user = Model_User::forge(array('authority_id' => 1));
+			$new_user->save();
+			Cookie::set('user_cookie_id',md5($new_user->id));
+			$new_user->cookie = md5($new_user->id);
+			$new_user->save();
+		}
 		if($id == null){
 			Response::redirect('top/latest');
 		}
@@ -31,9 +55,11 @@ class Controller_Board extends Controller_Template
 		}
 		$data['depart'] = Model_Depart::find($id);
 		$data['boardname'] = $data['depart']->depart_name;
-		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('depart_id' => $id,'state' => '4'),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9'));
-		$data['max_part'] = (int)(Model_Bulletin::query()->where('depart_id',$id)->where('state','4')->count() / 9);
-		$view = View::forge('layout/application');
+		$faculty_id = $data['depart']->faculty_id.'00';
+//		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array(array('state' => '3'),array(array('depart_id' => $id), 'or' => array(array('depart_id' => $faculty_id))),'or' => array(array('depart_id' => 100))),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9'));
+		$data['bulletins'] = DB::query('SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,COUNT(l.id) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND (depart_id = '.$id.' OR depart_id = '.$faculty_id.' OR depart_id = 100) GROUP BY l.id ORDER BY b.id DESC LIMIT '.(($data['part'] - 1) * 9).',9')->as_object()->execute()->as_array();
+		$data['max_part'] = (int)(Model_Bulletin::query()->where('state','3')->and_where_open()->where('depart_id',$id)->or_where('depart_id',$faculty_id)->or_where('depart_id','100')->and_where_close()->count() / 9);
+		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('board/list', $data);
 		return $view;
 	}
@@ -51,9 +77,9 @@ class Controller_Board extends Controller_Template
 		}
 		$data['facility'] = Model_Facility::find($id);
 		$data['boardname'] = $data['facility']->facility_name;
-		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('facility_id' => $id),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9'));
-		$data['max_part'] = (int)(Model_Bulletin::query()->where('facility_id',$id)->where('state','4')->count() / 9);
-		$view = View::forge('layout/application');
+		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('facility_id' => $id,'state' => 3),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9'));
+		$data['max_part'] = (int)(Model_Bulletin::query()->where('facility_id',$id)->where('state','3')->count() / 9);
+		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('board/list', $data);
 		return $view;
 	}
