@@ -7,6 +7,8 @@ class Model_User extends \Orm\Model
 		'id',
 		'authority_id',
 		'username',
+		'password',
+		'cookie',
 		'created_at',
 		'updated_at',
 	);

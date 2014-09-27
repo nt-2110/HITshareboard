@@ -5,23 +5,46 @@ class Controller_Top extends Controller_Template
 
 	public function action_latest()
 	{
-		$view = View::forge('layout/application');
+		$cookie = Cookie::get('user_cookie_id','null');
+		if(empty($cookie)){
+			$new_user = Model_User::forge(array('authority_id' => 1));
+			$new_user->save();
+			Cookie::set('user_cookie_id',md5($new_user->id));
+			$new_user->cookie = md5($new_user->id);
+			$new_user->save();
+		}
+		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('top/latest');
 		return $view;
 	}
 
 	public function action_info()
 	{
-		$view = View::forge('layout/application');
+		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('top/info');
+		return $view;
+	}
+
+	public function action_terms()
+	{
+		$view = Presenter::forge('layout/application');
+		$view->contents = View::forge('top/terms');
 		return $view;
 	}
 
 	public function action_upload()
 	{
+		$cookie = Cookie::get('user_cookie_id','null');
+		if(empty($cookie)){
+			$new_user = Model_User::forge(array('authority_id' => 1));
+			$new_user->save();
+			Cookie::set('user_cookie_id',md5($new_user->id));
+			$new_user->cookie = md5($new_user->id);
+			$new_user->save();
+		}
 		$data['faculties'] = Model_Faculty::find('all');
 		$data['departs'] = Model_Depart::find('all');
-		$view = View::forge('layout/application');
+		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('top/upload',$data);
 		return $view;
 	}

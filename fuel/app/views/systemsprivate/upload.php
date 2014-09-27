@@ -11,10 +11,10 @@
 <?php if(Session::get_flash('success')): ?>
 				<div class="alert alert-info" role="alert">画像を投稿しました。また審査に最大3日かかりますので、掲載までしばらくお待ちください。</div>
 <?php endif; ?>
-				掲示板画像を投稿する際は、必ず<?php echo Html::anchor('top/terms','利用規約'); ?>を読んで、投稿してください。また、投稿の際に利用規約に同意したものとします。
+				掲示板画像を投稿する際は、必ず<a href="terms.html">利用規約</a>を読んで、投稿してください。また、投稿の際に利用規約に同意したものとします。
 				<br>
 				<br>
-<?php echo Form::open(array('action' => 'image/upload', 'enctype' => 'multipart/form-data')) ?>
+<?php echo Form::open(array('action' => 'systemsprivate/regist', 'enctype' => 'multipart/form-data')) ?>
 					掲示画像の学部を選択…
 					<br>
 					<select name="id">
