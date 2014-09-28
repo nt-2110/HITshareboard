@@ -55,7 +55,7 @@ class Controller_Image extends Controller_Template
 
 	public function action_countup($id = null)
 	{
-		$cookie = Cookie::get('user_cookie_id','null');
+		$cookie = Cookie::get('user_cookie_id',null);
 		if(empty($cookie)){
 			$new_user = Model_User::forge(array('authority_id' => 1));
 			$new_user->save();
