@@ -79,7 +79,7 @@
 					</div>
 					<hr>
 					<div class="text-danger" style="font-family: cursive;">
-						<span class="glyphicon glyphicon-heart"></span> Today : 20 / All : 321
+						<span class="glyphicon glyphicon-heart"></span> Today : <?php echo $today_users; ?> / All : <?php echo $all_users."\n"; ?>
 					</div>
 					<hr>
 				</div>
