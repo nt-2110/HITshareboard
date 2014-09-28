@@ -5,7 +5,7 @@ class Controller_Systemsprivate extends Controller_Template
 
 	public function action_login()
 	{
-		$cookie = Cookie::get('user_cookie_id','null');
+		$cookie = Cookie::get('user_cookie_id',null);
 		if(empty($cookie)){
 			$new_user = Model_User::forge(array('authority_id' => 1));
 			$new_user->save();
@@ -38,7 +38,7 @@ class Controller_Systemsprivate extends Controller_Template
 
 	public function action_list()
 	{
-		$cookie = Cookie::get('user_cookie_id','null');
+		$cookie = Cookie::get('user_cookie_id',null);
 		if(empty($cookie)){
 			Response::redirect('top/latest');
 		}
@@ -72,7 +72,7 @@ class Controller_Systemsprivate extends Controller_Template
 
 	public function action_image($id = null)
 	{
-		$cookie = Cookie::get('user_cookie_id','null');
+		$cookie = Cookie::get('user_cookie_id',null);
 		if(empty($cookie)){
 			Response::redirect('top/latest');
 		}
@@ -91,7 +91,7 @@ class Controller_Systemsprivate extends Controller_Template
 
 	public function action_upload()
 	{
-		$cookie = Cookie::get('user_cookie_id','null');
+		$cookie = Cookie::get('user_cookie_id',null);
 		if(empty($cookie)){
 			Response::redirect('top/latest');
 		}
