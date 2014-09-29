@@ -41,6 +41,10 @@ class Controller_Top extends Controller_Template
 			Cookie::set('user_cookie_id',md5($new_user->id));
 			$new_user->cookie = md5($new_user->id);
 			$new_user->save();
+		}else{
+			$user = Model_User::find('first',array('where' => array('cookie' => $cookie)));
+			$user->updated_at = time();
+			$user->save();
 		}
 		$data['faculties'] = Model_Faculty::find('all');
 		$data['departs'] = Model_Depart::find('all');

@@ -12,6 +12,10 @@ class Controller_Board extends Controller_Template
 			Cookie::set('user_cookie_id',md5($new_user->id));
 			$new_user->cookie = md5($new_user->id);
 			$new_user->save();
+		}else{
+			$user = Model_User::find('first',array('where' => array('cookie' => $cookie)));
+			$user->updated_at = time();
+			$user->save();
 		}
 		$data['url'] = '/top/latest';
 		$data['part'] = Input::get('part');
@@ -28,7 +32,7 @@ class Controller_Board extends Controller_Template
 		foreach($faculties as $faculty){
 			$data['labels'][$faculty->id.'00'] = $faculty->id.'00';
 		}
-		$data['max_part'] = (int)(Model_Bulletin::query()->where('state','3')->count() / 9);
+		$data['max_part'] = (int)ceil(Model_Bulletin::query()->where('state','3')->count() / 9);
 		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('board/list', $data);
 		return $view;
@@ -43,6 +47,10 @@ class Controller_Board extends Controller_Template
 			Cookie::set('user_cookie_id',md5($new_user->id));
 			$new_user->cookie = md5($new_user->id);
 			$new_user->save();
+		}else{
+			$user = Model_User::find('first',array('where' => array('cookie' => $cookie)));
+			$user->updated_at = time();
+			$user->save();
 		}
 		if($id == null){
 			Response::redirect('top/latest');
@@ -59,7 +67,7 @@ class Controller_Board extends Controller_Template
 //		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array(array('state' => '3'),array(array('depart_id' => $id), 'or' => array(array('depart_id' => $faculty_id))),'or' => array(array('depart_id' => 100))),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9'));
 //		$data['bulletins'] = DB::query('SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,COUNT(l.id) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND (depart_id = '.$id.' OR depart_id = '.$faculty_id.' OR depart_id = 100) GROUP BY l.bulletin_id ORDER BY b.id DESC LIMIT '.(($data['part'] - 1) * 9).',9')->as_object()->execute()->as_array();
 		$data['bulletins'] = DB::query('SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,COUNT(l.id) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND (depart_id = '.$id.' OR depart_id = '.$faculty_id.' OR depart_id = 100) AND NOT l.bulletin_id IS NULL GROUP BY l.bulletin_id UNION SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,IFNULL(l.id,0) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND (depart_id = '.$id.' OR depart_id = '.$faculty_id.' OR depart_id = 100) AND l.bulletin_id IS NULL ORDER BY id DESC LIMIT '.(($data['part'] - 1) * 9).',9')->as_object()->execute()->as_array();
-		$data['max_part'] = (int)(Model_Bulletin::query()->where('state','3')->and_where_open()->where('depart_id',$id)->or_where('depart_id',$faculty_id)->or_where('depart_id','100')->and_where_close()->count() / 9);
+		$data['max_part'] = (int)ceil(Model_Bulletin::query()->where('state','3')->and_where_open()->where('depart_id',$id)->or_where('depart_id',$faculty_id)->or_where('depart_id','100')->and_where_close()->count() / 9);
 		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('board/list', $data);
 		return $view;
