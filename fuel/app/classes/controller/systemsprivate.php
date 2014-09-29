@@ -14,8 +14,6 @@ class Controller_Systemsprivate extends Controller_Template
 			$new_user->save();
 		}
 		$user = Model_User::find('first',array('where' => array('cookie' => $cookie)));
-		$user->cookie = md5($user->id);
-		$user->save();
 		if(Input::method() == 'POST'){
 			if($login = Model_User::find('first',array('where' => array('username' => Input::post('username'),'password' => md5(Input::post('password')))))){
 				$login->cookie = $cookie;

@@ -43,6 +43,7 @@
 								学科で絞り込み… <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">
+								<li role="presentation" class="dropdown-header">工学部</li>
 								<li><?php echo Html::anchor('board/depart/1','電子情報工学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/2','電気システム工学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/3','機械システム工学科'); ?></li>
@@ -50,13 +51,16 @@
 								<li><?php echo Html::anchor('board/depart/5','都市デザイン工学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/6','建築工学科'); ?></li>
 								<li class="divider"></li>
+								<li role="presentation" class="dropdown-header">情報学部</li>
 								<li><?php echo Html::anchor('board/depart/7','情報工学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/8','知的情報システム学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/9','健康情報学科'); ?></li>
 								<li class="divider"></li>
+								<li role="presentation" class="dropdown-header">環境学部</li>
 								<li><?php echo Html::anchor('board/depart/10','環境デザイン学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/11','地球環境学科'); ?></li>
 								<li class="divider"></li>
+								<li role="presentation" class="dropdown-header">生命学部</li>
 								<li><?php echo Html::anchor('board/depart/12','生体医工学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/13','食品生命科学科'); ?></li>
 							</ul>
