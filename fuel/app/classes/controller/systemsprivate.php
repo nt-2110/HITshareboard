@@ -51,7 +51,7 @@ class Controller_Systemsprivate extends Controller_Template
 		}
 		$offset = ($data['part'] - 1) * 9;
 		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('state' => '2'),'order_by' => array('id' => 'desc'),'offset' => $offset, 'limit' => '9'));
-		$data['max_part'] = (int)(Model_Bulletin::query()->where('state','1')->count() / 9);
+		$data['max_part'] = (int)ceil(Model_Bulletin::query()->where('state','1')->count() / 9);
 		$view = Presenter::forge('layout/system');
 		$view->contents = View::forge('systemsprivate/list', $data);
 		return $view;

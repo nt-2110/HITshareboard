@@ -14,26 +14,26 @@
 				</div>
 			</div>
 <?php endforeach; ?>
+		</div>
 
-			<div class="text-center">
-				<ul class="pagination">
+		<div class="text-center">
+			<ul class="pagination">
 <?php if($part > 1): ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.($part - 1),'<span class="glyphicon glyphicon-chevron-left glyphicon glyphicon-"></span>','')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.($part - 1),'<span class="glyphicon glyphicon-chevron-left glyphicon glyphicon-"></span>',''); ?></li>
 <?php if($part > 2): ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.($part - 2),($part - 2),'')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.($part - 2),($part - 2),''); ?></li>
 <?php endif; ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.($part - 1),($part - 1),'')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.($part - 1),($part - 1),''); ?></li>
 <?php endif; ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.$part,$part,'')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.$part,$part,'')."\n"; ?></li>
 <?php if($max_part - $part >= 1): ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.($part + 1),($part + 1),'')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.($part + 1),($part + 1),''); ?></li>
 <?php if($max_part - $part >=2): ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.($part + 2),($part + 2),'')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.($part + 2),($part + 2),''); ?></li>
 <?php endif; ?>
-					<li><?php echo Html::anchor('systemsprivate/list?part='.($part + 1),'<span class="glyphicon glyphicon-chevron-right glyphicon glyphicon-"></span>','')."\n"; ?></li>
+				<li><?php echo Html::anchor('systemsprivate/list?part='.($part + 1),'<span class="glyphicon glyphicon-chevron-right glyphicon glyphicon-"></span>',''); ?></li>
 <?php endif; ?>
-				</ul>
-			</div>
+			</ul>
 		</div>
 	</div>
 </div>
