@@ -17,7 +17,7 @@
 <?php echo Form::open(array('action' => 'systemsprivate/regist', 'enctype' => 'multipart/form-data')) ?>
 					掲示画像の学部を選択…
 					<br>
-					<select name="id">
+					<select name="id" class="form-control">
 <?php foreach($faculties as $faculty): ?>
 						<option value="<?php echo $faculty->id; ?>00">---<?php echo $faculty->faculty_name; ?>---</option>
 <?php 	foreach($departs as $depart): ?>
