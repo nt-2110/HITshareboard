@@ -23,7 +23,8 @@ class Controller_Board extends Controller_Template
 		{
 			$data['part'] = 1;
 		}
-		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('state' => '3'),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9' ));
+//		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('state' => '3'),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9' ));
+		$data['bulletins'] = DB::query('SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,COUNT(l.id) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND NOT l.bulletin_id IS NULL GROUP BY l.bulletin_id UNION SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,IFNULL(l.id,0) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND l.bulletin_id IS NULL ORDER BY id DESC LIMIT '.(($data['part'] - 1) * 9).',9')->as_object()->execute()->as_array();
 		$departs = Model_depart::find('all');
 		foreach($departs as $depart){
 			$data['labels'][$depart->id] = $depart->faculty_id.'00';
