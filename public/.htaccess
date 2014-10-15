@@ -5,7 +5,7 @@
 
 	RewriteEngine on
 
-	RewriteRule (css|js|jpeg|jpg|png|gif)$ - [L]
+	RewriteRule ^assets/ - [L]
 	RewriteRule index\.php/vpn$ - [L]
 	RewriteCond %{REMOTE_ADDR} !^150\.19\..*
 	RewriteRule .* index.php/vpn [QSA,L]
