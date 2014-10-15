@@ -5,6 +5,11 @@
 
 	RewriteEngine on
 
+	RewriteRule (css|js|jpeg|jpg|png|gif)$ - [L]
+	RewriteRule index\.php/vpn$ - [L]
+	RewriteCond %{REMOTE_ADDR} !^150\.19\..*
+	RewriteRule .* index.php/vpn [QSA,L]
+
 	# NOTICE: If you get a 404 play with combinations of the following commented out lines
 	#AllowOverride All
 	#RewriteBase /wherever/fuel/is
