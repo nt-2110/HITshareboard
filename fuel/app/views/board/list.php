@@ -1,5 +1,10 @@
 <div class="col-md-10">
 	<div class="well well-sm">
+<?php if(empty($boardname)): ?>
+	<?php if(!Cookie::get('terms_check',null)&&Cookie::get('terms_alert',null)<5): ?>
+		<div class="alert alert-danger" role="danger">本サービスを使用する前に必ず<?php echo Html::anchor('top/terms','利用規約'); ?>を確認してください。</div>
+	<?php endif; ?>
+<?php endif; ?>
 		<ol class="breadcrumb">
 			<li><?php echo Html::anchor('top/latest','トップ'); ?></li>
 <?php if(!empty($boardname)): ?>
