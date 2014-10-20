@@ -17,6 +17,8 @@ class Controller_Board extends Controller_Template
 			$user->updated_at = time();
 			$user->save();
 		}
+		$terms_alert = Cookie::get('terms_alert',null);
+		Cookie::set('terms_alert',$terms_alert+1);
 		$data['url'] = '/top/latest';
 		$data['part'] = Input::get('part');
 		if(empty($data['part']))
