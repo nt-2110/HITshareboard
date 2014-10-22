@@ -38,6 +38,7 @@
 					<ul class="nav nav-tabs" role="tablist" id="myTab">
 						<li class="active"><a href="#vpn" role="tab" data-toggle="tab"><span class=" glyphicon glyphicon-phone"></span>&nbsp;学外から利用する</a></li>
 						<li><a href="#wlan" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-signal"></span>&nbsp;学内から利用する</a></li>
+						<li><a href="#qanda" role="tab" data-toggle="tab"><span class=" glyphicon glyphicon-question-sign"></span>&nbsp;Q&amp;A</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -72,6 +73,11 @@
 								4.詳細を確認して、了解を押してください。これで HITShareboard をご利用いただけます。<br>
 								<?php echo Asset::img('ios_4.jpg'); ?>
 							</div>
+						</div>
+						<div class="tab-pane fade in active" id="qanda">
+							<br>
+							<h4>&nbsp;&nbsp;&nbsp;●スマートフォンの Chromeブラウザ で正しく表示されない！学内接続してるのに…</h4>
+							<p>&nbsp;&nbsp;&nbsp;設定の「データ使用率を節約」を有効にしていると、正しく表示されません。無効に設定してください。
 							<hr>
 							<p>&nbsp;&nbsp;&nbsp;接続できない等の問題が発生した場合、Nexus3階のISMCサポートセンターで問い合わせください。</p>
 						</div>
