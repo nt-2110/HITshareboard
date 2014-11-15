@@ -18,13 +18,15 @@
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
+<!--
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<?php echo Html::anchor('top/latest','<span class="glyphicon glyphicon-list-alt"></span> HIT ShareBoard',array('class'=>'navbar-brand')); ?>
+-->
+					<?php echo Html::anchor('top/latest','<span class="glyphicon glyphicon-list-alt"></span> HIT ShareBoard(試行期間中)',array('class'=>'navbar-brand')); ?>
 				</div>
 			</div>
 		</nav>
@@ -75,7 +77,7 @@
 					<div class="panel panel-info">
 						<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> お知らせ</div>
 						<div class="panel-body">
-							10月11日(土)にメンテナンスを行います。<br><br>その時間は HIT ShareBoard を利用することはできません。
+							<br>・このサイトは平成27年2月末まで運営します。
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">

@@ -51,8 +51,13 @@ class Model_Bulletin extends \Orm\Model
 		$thumbnail = new \Imagick();
 		$thumbnail->readImageBlob($imagick->getImageBlob());
 //		$thumbnail->cropThumbnailImage(200,160);
-		$x = ( $thumbnail->getImageWidth() / 2 ) - 400;
-		$thumbnail->cropImage(800,640,$x,0);
+		if($thumbnail->getImageWidth() > 480){
+			$x = ( $thumbnail->getImageWidth() / 2 ) - 300;
+			$thumbnail->cropImage(600,480,$x,0);
+		}else{
+			$x = ( $thumbnail->getImageWidth() / 2 ) - 200;
+			$thumbnail->cropImage(400,320,$x,0);
+		}
 		$thumbnail->scaleImage(200,160,true);
 //		$thumbnail->cropImage(200,160,0,0);
 		$data = array(
