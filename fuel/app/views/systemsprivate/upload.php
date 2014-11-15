@@ -9,7 +9,7 @@
 				<div class="alert alert-danger" role="alert">画像を投稿する事が出来ませんでした。内容を確認の上、もう一度試してみてください。</div>
 <?php endif; ?>
 <?php if(Session::get_flash('success')): ?>
-				<div class="alert alert-info" role="alert">画像を投稿しました。また審査に最大3日かかりますので、掲載までしばらくお待ちください。</div>
+				<div class="alert alert-info" role="alert">画像を投稿しました。</div>
 <?php endif; ?>
 				掲示板画像を投稿する際は、必ず<a href="terms.html">利用規約</a>を読んで、投稿してください。また、投稿の際に利用規約に同意したものとします。
 				<br>

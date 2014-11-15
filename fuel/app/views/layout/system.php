@@ -71,7 +71,7 @@
 					<div class="panel panel-info">
 						<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> お知らせ</div>
 						<div class="panel-body">
-							10月11日(土)にメンテナンスを行います。<br><br>その時間は HIT ShareBoard を利用することはできません。
+							<br>・このサイトは平成27年2月末まで運営します。
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">
