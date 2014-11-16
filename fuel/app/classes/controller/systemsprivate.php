@@ -44,6 +44,19 @@ class Controller_Systemsprivate extends Controller_Template
 		if($user->authority_id != 2){
 			Response::redirect('top/latest');
 		}
+		$faculties = Model_Faculty::find('all');
+		$faculty_icon[1] = '<span class="label label-default">';
+		$faculty_icon[2] = '<span class="label label-danger"><span class="glyphicon glyphicon-wrench"></span>';
+		$faculty_icon[3] = '<span class="label label-info"><span class="glyphicon glyphicon-phone"></span>';
+		$faculty_icon[4] = '<span class="label label-success"><span class="glyphicon glyphicon-globe"></span>';
+		$faculty_icon[5] = '<span class="label label-warning"><span class="glyphicon glyphicon-plus"></span>';
+		foreach($faculties as $faculty){
+			$data['labels'][$faculty->id.'00'] = $faculty_icon[$faculty->id].$faculty->faculty_name.'</span>';
+		}
+		$departs = Model_depart::find('all');
+		foreach($departs as $depart){
+			$data['labels'][$depart->id] = $faculty_icon[$depart->faculty_id].$depart->depart_name.'</span>';
+		}
 		$data['part'] = Input::get('part');
 		if(empty($data['part']))
 		{

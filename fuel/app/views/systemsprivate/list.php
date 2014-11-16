@@ -9,7 +9,8 @@
 				<div class="thumbnail">
 					<?php echo Html::anchor('systemsprivate/image/'.$bulletin->id, '<img src="http://'.$_SERVER['SERVER_NAME'].'/HITshareboard/image/'.$bulletin->id.'/thumbnail" alt="...">','')."\n"; ?>
 					<div class="caption">
-						<span class="glyphicon glyphicon-time"></span> : <?php echo date('Y年n月j日',$bulletin->created_at); ?>
+						<span class="glyphicon glyphicon-time"></span> : <?php echo date('Y年n月j日',$bulletin->created_at); ?><br>
+<?php 	echo htmlspecialchars_decode($labels[$bulletin->depart_id]); ?>
 					</div>
 				</div>
 			</div>
