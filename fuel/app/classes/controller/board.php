@@ -27,13 +27,26 @@ class Controller_Board extends Controller_Template
 		}
 //		$data['bulletins'] = Model_Bulletin::find('all', array('where' => array('state' => '3'),'order_by' => array('id' => 'desc'),'offset' => ($data['part'] - 1) * 9,'limit' => '9' ));
 		$data['bulletins'] = DB::query('SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,COUNT(l.id) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND NOT l.bulletin_id IS NULL GROUP BY l.bulletin_id UNION SELECT b.id AS id,facility_id,depart_id,state,b.created_at,b.updated_at,IFNULL(l.id,0) AS cnt FROM bulletins AS b LEFT JOIN likes AS l ON b.id = l.bulletin_id WHERE state = 3 AND l.bulletin_id IS NULL ORDER BY id DESC LIMIT '.(($data['part'] - 1) * 9).',9')->as_object()->execute()->as_array();
+//		$departs = Model_depart::find('all');
+//		foreach($departs as $depart){
+//			$data['labels'][$depart->id] = $depart->faculty_id.'00';
+//		}
+//		$faculties = Model_Faculty::find('all');
+//		foreach($faculties as $faculty){
+//			$data['labels'][$faculty->id.'00'] = $faculty->id.'00';
+//		}
+		$faculties = Model_Faculty::find('all');
+		$faculty_icon[1] = '<span class="label label-default">';
+		$faculty_icon[2] = '<span class="label label-danger"><span class="glyphicon glyphicon-wrench"></span>';
+		$faculty_icon[3] = '<span class="label label-info"><span class="glyphicon glyphicon-phone"></span>情報学部</span>';
+		$faculty_icon[4] = '<span class="label label-success"><span class="glyphicon glyphicon-globe"></span>';
+		$faculty_icon[5] = '<span class="label label-warning"><span class="glyphicon glyphicon-plus"></span>';
+		foreach($faculties as $faculty){
+			$data['labels'][$faculty->id.'00'] = $faculty_icon[$faculty->id].$faculty->faculty_name.'</span>';
+		}
 		$departs = Model_depart::find('all');
 		foreach($departs as $depart){
-			$data['labels'][$depart->id] = $depart->faculty_id.'00';
-		}
-		$faculties = Model_Faculty::find('all');
-		foreach($faculties as $faculty){
-			$data['labels'][$faculty->id.'00'] = $faculty->id.'00';
+			$data['labels'][$depart->id] = $faculty_icon[$depart->faculty_id].$depart->depart_name.'</span>';
 		}
 		$data['max_part'] = (int)ceil(Model_Bulletin::query()->where('state','3')->count() / 9);
 		$view = Presenter::forge('layout/application');
