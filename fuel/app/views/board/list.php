@@ -5,7 +5,7 @@
 		<div class="alert alert-danger" role="danger">本サービスを使用する前に必ず<?php echo Html::anchor('top/terms','利用規約'); ?>を確認してください。</div>
 	<?php endif; ?>
 <?php endif; ?>
-		<div class="alert alert-danger" role="danger">最終的な内容については、必ず掲示板を確認してください</div>
+		<div class="alert alert-danger" role="danger">最終的な内容については、必ず掲示板を確認してください。</div>
 		<ol class="breadcrumb">
 			<li><?php echo Html::anchor('top/latest','トップ'); ?></li>
 <?php if(!empty($boardname)): ?>
