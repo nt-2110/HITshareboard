@@ -10,24 +10,25 @@
 		<?php echo Asset::css('bootstrap.min.css'); ?>
 		<!-- GoogleAnalytics -->
 		<script>
+			// 追加部分
+			// analyticsIPタグの読み込み
+			<script type="text/javascript" src="//www.analyticsip.net/getIP/public_html/ra/script.php"></script>
+			<noscript><p><img src="//www.analyticsip.net/getIP/public_html/ra/track.php" alt="" width="1" height="1" /></p>
+			</noscript>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 			ga('create', 'UA-32108224-3', 'auto');
-			ga('send', 'pageview');
-		</script>
-		
-		<!-- VPN用 -->
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-32108224-4', 'auto');
-			ga('send', 'pageview');
-		</script>
 
+			// 追加部分
+			// IP,Cookie,AccessTime取得
+			ga('set', 'dimension1', trackCommonMethod.getIP());
+			ga('set', 'dimension2', trackCommonMethod.getCookie());
+			ga('set', 'dimension3', trackCommonMethod.getAccessTime());
+
+			ga('send', 'pageview');
+		</script>
 	</head>
 	<body>
 
