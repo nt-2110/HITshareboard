@@ -9,8 +9,8 @@
 		<!-- Bootstrap -->
 		<?php echo Asset::css('bootstrap.min.css'); ?>
 		<!-- GoogleAnalytics -->
-		// 追加部分
-		// analyticsIPタグの読み込み
+		<!-- 追加部分 -->
+		<!-- analyticsIPタグの読み込み -->
 		<script type="text/javascript" src="//www.analyticsip.net/getIP/public_html/ra/script.php"></script>
 		<noscript><p><img src="//www.analyticsip.net/getIP/public_html/ra/track.php" alt="" width="1" height="1" /></p>
 		</noscript>
