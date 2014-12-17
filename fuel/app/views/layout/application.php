@@ -65,6 +65,7 @@
 								学科で絞り込み… <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">
+								<li><?php echo Html::anchor('board/faculty/1','学務部'); ?></li>
 								<li role="presentation" class="dropdown-header">工学部</li>
 								<li><?php echo Html::anchor('board/depart/1','電子情報工学科'); ?></li>
 								<li><?php echo Html::anchor('board/depart/2','電気システム工学科'); ?></li>

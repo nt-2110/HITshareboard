@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>HIT Shareboard</title>
+		<title>HIT Shareboard(試行期間中)</title>
 
 		<!-- Bootstrap -->
 		<?php echo Asset::css('bootstrap.min.css'); ?>
