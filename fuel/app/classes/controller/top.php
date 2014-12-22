@@ -54,4 +54,10 @@ class Controller_Top extends Controller_Template
 		return $view;
 	}
 
+	public function action_termswindow()
+	{
+		$view = View::forge('top/termswindow');
+		$view->contents = View::forge('top/terms');
+		return $view;
+	}
 }

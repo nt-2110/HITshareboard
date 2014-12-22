@@ -15,7 +15,7 @@ class Create_faculties
 		), array('id'));
 	
 		$table = 'faculties';
-\DB::insert($table)->set(array('faculty_name' => '全学部'))->execute();
+\DB::insert($table)->set(array('faculty_name' => '学務部'))->execute();
 \DB::insert($table)->set(array('faculty_name' => '工学部'))->execute();
 \DB::insert($table)->set(array('faculty_name' => '情報学部'))->execute();
 \DB::insert($table)->set(array('faculty_name' => '環境学部'))->execute();
