@@ -27,7 +27,6 @@ class Controller_Top extends Controller_Template
 
 	public function action_terms()
 	{
-		Cookie::set('terms_check','OK');
 		$view = Presenter::forge('layout/application');
 		$view->contents = View::forge('top/terms');
 		return $view;
