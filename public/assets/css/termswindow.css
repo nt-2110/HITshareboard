@@ -1,0 +1,22 @@
+.scrollable {
+	overflow: auto;
+	height: 300px;
+	width: 100%;
+	border: dashed 1px;
+}
+
+.scrollable>div {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.terms {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.terms button {
+	width: 45%;
+	margin: 0 auto;
+}
