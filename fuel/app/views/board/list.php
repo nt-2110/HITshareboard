@@ -14,6 +14,7 @@
 			});
 		</script>
 <?php endif; ?>
+		<div class="alert alert-danger" role="danger">Webアンケートを実施しています。<a href="https://docs.google.com/forms/d/1hF2j8BFrRnhrDPJrBvarMRuMORJKFSPa3EpnWNywUvI/viewform?c=0&w=1&usp=mail_form_link">こちら</a>からご回答ください。</div>
 		<div class="alert alert-danger" role="danger">最終的な内容については、必ず掲示板を確認してください。</div>
 		<ol class="breadcrumb">
 			<li><?php echo Html::anchor('top/latest','トップ'); ?></li>
